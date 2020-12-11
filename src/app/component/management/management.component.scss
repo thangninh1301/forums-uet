@@ -1,0 +1,19 @@
+* {
+    overflow-y: hidden;
+}
+:host {
+    .app-container {
+        position: relative;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        .content {
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+            height: calc(100vh - 85px);
+            overflow-y: auto;
+            background-color: #343a40;
+            color: #d8d9db;
+            position: relative;
+        }
+    }
+}

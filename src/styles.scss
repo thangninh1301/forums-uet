@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+*{
+    padding: 0 ;
+    margin: 0 ;
+    font-family: 'Roboto' !important;
+    // overflow-y: hidden;
+}
+@import '~@ctrl/ngx-emoji-mart/picker';
+.emoji-mart-preview{
+    display: none !important;
+}
+// .emoji-mart-scroll{
+
+// }
+.emoji-mart-scroll::-webkit-scrollbar {
+  width: 10px;
+	background-color: #F5F5F5;
+}
+.emoji-mart-scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: linear-gradient(left, #96A6BF, #63738C);
+  box-shadow: inset 0 0 1px 1px #5C6670;
+}
+
+.emoji-mart-scroll::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: #eee;
+  box-shadow: 0 0 0px 0px #bbb, inset 0 0 7px #ffffff
+}
+
+.emoji-mart-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(left, #8391A6, #536175);
+}
+#emoji-mart-search-1{
+    display: flex;
+    justify-items: center;
+}

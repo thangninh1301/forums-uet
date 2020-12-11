@@ -1,0 +1,92 @@
+<div class="app-nav">
+  <a class="navbar-item">
+    <img src="assets/img/voz-logo.png">
+  </a>
+</div>
+<div class="app-nav">
+  <div id="new" [ngClass]="{'focus' : checkFocusNews}" (click)="routePage('news')">News</div>
+  <div id="message" [ngClass]="{'focus' : checkFocusMessage}" (click)="routePage('message')">Message</div>
+  <div id="dangtin" [ngClass]="{'focus' : checkFocusPost}" (click)="routePage('news/news-post')">Đăng tin</div>
+  <div id="manage" [ngClass]="{'focus' : checkFocusManage}" (click)="routePage('news/news-manage')">Manage</div>
+  <div id="bell">
+    <fa-icon [icon]="faBell"></fa-icon>
+    <div class="wrapper-noti">
+      <header class="header-noti">
+        <h2>Thông báo</h2>
+      </header>
+      <ul class="list-noti">
+        <li class="list-item">
+          <a href="" class="noti-link">
+            <img src="https://previews.123rf.com/images/panyamail/panyamail1809/panyamail180900343/109879063-user-avatar-icon-sign-profile-symbol.jpg" alt="">
+            <div class="noti-info">
+              <span class="noti-name">Thông báo 1</span>
+              <span class="noti-description">23 phút trước</span>
+            </div>
+          </a>
+        </li>
+        <li class="list-item">
+          <a href="" class="noti-link">
+            <img src="https://previews.123rf.com/images/panyamail/panyamail1809/panyamail180900343/109879063-user-avatar-icon-sign-profile-symbol.jpg" alt="">
+            <div class="noti-info">
+              <span class="noti-name isClick">Thông báo 2</span>
+              <span class="noti-description isClick">23 phút trước</span>
+            </div>
+          </a>
+        </li>
+        <li class="list-item">
+          <a href="" class="noti-link">
+            <img src="https://previews.123rf.com/images/panyamail/panyamail1809/panyamail180900343/109879063-user-avatar-icon-sign-profile-symbol.jpg" alt="">
+            <div class="noti-info">
+              <span class="noti-name">Thông báo 3</span>
+              <span class="noti-description">23 phút trước</span>
+            </div>
+          </a>
+        </li>
+        <li class="list-item">
+          <a href="" class="noti-link">
+            <img src="https://previews.123rf.com/images/panyamail/panyamail1809/panyamail180900343/109879063-user-avatar-icon-sign-profile-symbol.jpg" alt="">
+            <div class="noti-info">
+              <span class="noti-name">Thông báo 4</span>
+              <span class="noti-description">23 phút trước</span>
+            </div>
+          </a>
+        </li>
+        <li class="list-item">
+          <a href="" class="noti-link">
+            <img src="https://previews.123rf.com/images/panyamail/panyamail1809/panyamail180900343/109879063-user-avatar-icon-sign-profile-symbol.jpg" alt="">
+            <div class="noti-info">
+              <span class="noti-name">Thông báo 5</span>
+              <span class="noti-description">23 phút trước</span>
+            </div>
+          </a>
+        </li>
+      </ul>
+      <footer class="footer-noti">
+        <ul class="footer-list">
+          <li class="footer-item">Show all</li>
+          <li class="footer-item">Mark read</li>
+        </ul>
+      </footer>
+    </div>
+  </div>
+  <div id="login" *ngIf="!activeUser" (click)="routePage('account')">Log in</div>
+  <!-- <div id="login" *ngIf="activeUser">{{userName}}
+    
+  </div> -->
+  <div id="avatar" *ngIf="activeUser">
+    <div class="dropdown dropleft">
+      <div id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <!-- <img src="{{avatar}}" *ngIf="avatar != null" alt="message-icon"> -->
+        <ngx-avatar size="30" name="{{userName}}"></ngx-avatar>
+      </div>
+      <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <!-- <li id="logout" class="dropdown-item" (click)=onProfile()> Profile </li> -->
+        <li id="logout" class="dropdown-item" (click)="logout()">Logout</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="white-bar">
+</div>

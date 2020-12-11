@@ -1,0 +1,68 @@
+<div class="infor-right">
+    <!-- thông tin người đang trong cuộc trò chuyện -->
+    <div class="infor-acc">
+        <img id="avatar" src="" alt="">
+
+        <!-- nếu userInfor mà null thì sẽ get thông tin user từ trên home về -->
+        <ngx-avatar  size="120" name="{{userInfor?.fullName}}"></ngx-avatar>  
+        <ngx-avatar  *ngIf = "userInfor?.fullName == null"  size="120" name="{{name}}"></ngx-avatar>  
+        <div id="infor-text">
+            <p id="name">{{userInfor?.fullName}}</p>
+            <p id="name" *ngIf = "userInfor?.fullName == null">{{name}}</p>
+            <p id="phone">{{userInfor?.phone}}</p>
+            <p id="phone" *ngIf = "userInfor?.fullName == null">{{phone}}</p>
+            <p id="email">{{userInfor?.email}}</p>
+            <p id="email" *ngIf = "userInfor?.fullName == null">{{email}}</p>
+        </div>
+    </div>
+    <div class="file-shared">
+        <!-- click để show tệp đã chia sẻ -->
+        <div class="title" (click)="showFile()">
+            <p id="name-file">TỆP ĐÃ CHIA SẺ</p>
+            <!-- thay đổi icon đóng mở tệp đã chia sẻ -->
+            <img id="icon" 
+                [src]="checkFile == false ? '../../../../assets/ICON/IconAppChat/13.svg' : '../../../../assets/ICON/IconAppChat/19.svg'">
+        </div>
+        <!-- tăng giảm chiều cao cho phần hiện file khi đóng và mở phần hiện img và thanh cuôn scroll xuống dưới -->
+        <div id="list-file" [hidden]="checkFile" #scrollMe [ngStyle] = "{'max-height' : checkImg == true ? '200px' : '150px'}">
+            <div id="file" *ngFor="let file of fileSave">
+                    <!-- <img *ngIf = "file.type == 'pdf' || file.type == 'word' || file.type == 'excel' || file.type == 'pp'" id="icon-pdf" src="{{file.fileIcon}}"> -->
+                    <!-- so sánh để hiện icon từng loại file -->
+                    <img *ngIf = "file.fileType == 'pdf'" id="icon-pdf" src="../../../../assets/ICON/IconAppChat/pdf-icon.svg">
+                    <img *ngIf = "file.fileType == 'docs'" id="icon-pdf" src="../../../../assets/ICON/IconAppChat/microsoft-word.svg">
+                    <img *ngIf = "file.fileType == 'excel'" id="icon-pdf" src="../../../../assets/ICON/IconAppChat/microsoft-excel.svg">
+                    <img *ngIf = "file.fileType == 'ppt'" id="icon-pdf" src="../../../../assets/ICON/IconAppChat/microsoft-powerpoint.svg">
+                     <p *ngIf = "file.fileType == 'pdf' || file.fileType == 'docs' || file.fileType == 'excel' || file.fileType === 'ppt'" id="name-pdf"><a (click) = "downloadFile(file.filePath,file.fileName)" href="{{file.filePath}}">{{file.fileName}}</a></p>
+                
+            </div>
+        </div>
+        <!-- click để show img đã chia sẻ -->
+        <div class="title-img" (click)="showImg()">
+            <p id="name-file">ẢNH ĐÃ CHIA SẺ</p>
+            <!-- thay đổi icon đóng mở img đã chia sẻ -->
+            <img id="icon" 
+                [src]="checkImg == false ? '../../../../assets/ICON/IconAppChat/13.svg' : '../../../../assets/ICON/IconAppChat/19.svg' ">
+        </div>
+        <!-- scroll thanh cuộn img và xét height khi đóng mở phần hiện file -->
+        <div id="list-img" #scrollMe_2 [hidden]="checkImg" [ngStyle] = "{'max-height' : checkFile == true ? '200px' : '150px'}">
+            <div *ngFor="let imgs of fileSave" >
+                <!-- hiện file nếu file là img -->
+                <div id="img" *ngIf = "imgs.fileType == 'img'">
+                    <!-- click vào img để xét checkzoom để zoom ảnh và lấy src của ảnh -->
+                    <img  src="{{imgs.filePath}}" (click) = "getClickImg(imgs.filePath)" alt="">
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+   
+</div>
+<!-- xét check zoom để zoom img và click để unzoom -->
+<div  *ngIf="checkZoom" class="zoom-img-click" (click) = "UnZoom()"> 
+    
+        <!-- <img src="../../../assets/ICON/IconboxChat/3.svg" alt="" class="icon-clock" (click) = "UnZoom()"> -->
+        <img src= {{imgsrc}} alt="">
+    
+    
+</div>

@@ -1,0 +1,55 @@
+<div class="wrapper">
+    <div class="body-content">
+        <div class="block news-1" *ngFor="let arti of listArtical">
+            <h2 class="block-header">
+                <a routerLink='/news/news-detail/{{arti._id}}' >
+                    <span>tin tức</span>
+                   {{arti.title}}
+                </a>
+            </h2>
+            <div class="block-body">
+                <div class="date">{{arti.publishedAt | date:'LLL'}} <b>{{arti.publishedAt | date:'dd'}}</b></div>
+                <div class="message-main">
+                    <header>
+                        <div class="user-timeup">
+                            <ul>
+                                <li><a href="#"> <fa-icon [icon]="faUser"></fa-icon>Admin</a></li>
+                                <li><a href="#"> <fa-icon [icon]="faClock"></fa-icon>{{arti.publishedAt | date:'dd-MMMM-yy  hh:mm aaa'}}</a></li>
+                            </ul>
+                        </div>
+                        <div class="like-comment">
+                            <ul>
+                                <li><fa-icon [icon]="faThumbsup"></fa-icon>{{arti.likes.length}}</li>
+                                <!-- <li><fa-icon [icon]="faComment"></fa-icon>{{arti.comments.length}}</li> -->
+                            </ul>
+                        </div>
+                    </header>
+                    <hr>
+                    <div class="message-body">
+                        <img src="{{arti.profileImage}}" alt="iphone12">
+                        <!-- <img src="https://cdn.mos.cms.futurecdn.net/otjbibjaAbiifyN9uVaZyL-1200-80.jpg" alt="iphone12"> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Block news 2 -->
+
+    </div>
+    <div class="body-slidebar">
+        <h2>Share this page</h2>
+        <div class="slidebar-body">
+            <ul>
+                <li title="Facebook"><a href=""><fa-icon [icon]="faComment"></fa-icon></a></li>
+                <li title="Twitter"><a href=""><fa-icon [icon]="faComment"></fa-icon></a></li>
+                <li title="Reddit"><a href=""><fa-icon [icon]="faComment"></fa-icon></a></li>
+                <li title="Pinterest"><a href=""><fa-icon [icon]="faComment"></fa-icon></a></li>
+                <li title="WhatsApp"><a href=""><fa-icon [icon]="faComment"></fa-icon></a></li>
+                <li title="Link"><a href=""><fa-icon [icon]="faLink"></fa-icon></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="body-footer">
+    <button>Load more...</button>
+</div>

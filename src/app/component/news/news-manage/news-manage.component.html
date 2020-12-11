@@ -1,0 +1,31 @@
+<div class="wrapper-manage">
+    <ul class="post-list" *ngFor="let arti of listArticle">
+        <li class="post-item" >
+            <div class="post-title">
+                <h2>{{arti.title}}</h2>
+                <div class="like-comment-time">
+                    <div class="like-comment">
+                        <span><fa-icon [icon]="faThumbsUp"></fa-icon>{{arti.likes.length}}</span>
+                        <span><fa-icon [icon]="faComment"></fa-icon>0</span>
+                    </div>
+                    <span>{{arti.publishedAt | date:'dd-MM-yy  hh:mm aaa'}}</span>
+                </div>
+            </div>
+            <div class="post-edit">
+                <button class="btn-icon-edit">
+                    <fa-icon [icon]="faEdit"></fa-icon>
+                </button>
+            </div>
+            <div class="post-delete">
+                <button class="btn-icon-delete">
+                    <fa-icon [icon]="faTrashAlt"></fa-icon> 
+                </button>
+            </div>
+            <div class="post-news">
+                <button class="post-btn">Đăng bài</button>
+            </div>
+        </li>
+        <hr>
+    </ul>
+    <button class="btn-add-post">Xem thêm...</button>
+</div>

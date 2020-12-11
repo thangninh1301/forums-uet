@@ -1,0 +1,60 @@
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px 36px !important;
+  background-color: #343a40;
+
+  .body-content {
+    width: 100%;
+    font-size: 1.3rem;
+
+    a {
+      font-size: 1.1rem;
+      color: #95a4b7;
+    }
+
+    .rank {
+      font-size: 1rem;
+    }
+    hr {
+      display: block;
+      height: 1px;
+      border: 0;
+      border-top: 1px solid #ccc;
+      margin: 1rem;
+      padding: 0;
+    }
+    .name {
+      font-size: 1.2rem;
+    }
+
+    .time {
+      font-size: 0.9rem;
+      color: #878a90;
+    }
+
+    .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 6rem;
+      height: 6rem;
+    }
+    .like{
+      border-left : 0.2rem solid #52a7ff;
+    }
+    .reply{
+      padding-left: 1rem !important;
+      margin-bottom: 1rem !important;
+      border-left : 0.2rem solid #f19d37;
+    }
+    .attach{
+
+    }
+    .post{
+      margin-left: auto !important;
+    }
+  }
+}

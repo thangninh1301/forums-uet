@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.4.25/jodit.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jodit/3.4.25/jodit.min.js"></script>
+
+<div class="p-body-main">
+    <h1 class="center" style="font:30px; color: #d8d9db">Post thread </h1>
+    <input type="text" id="threadTitle" placeholder="Thread Title" (change)="updateTitle($event)">
+    <br>
+    <hr style="background-color: rgb(168, 186, 245); height: 3px;">
+    <jodit-editor 
+        [(ngModel)]="htmlText"  
+        [config]="config" 
+        ></jodit-editor>
+    <br>
+    <input 
+        style='display: none' 
+        type="file" id="imgTitle" 
+        (change)="onFileSelected($event)" 
+        #fileInput
+        >
+    <button type="button" (click)="fileInput.click()">Attach files </button><br>
+    <img [src]="url" style="max-height: 350px; padding-bottom:20px !important;" >
+</div>
+<div class="p-body-footer"> 
+    <button type="button" id="postThread" (click)="postThread()"> POST NEWS </button>
+</div>
+
+
+

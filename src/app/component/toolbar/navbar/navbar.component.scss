@@ -1,0 +1,184 @@
+:host {
+    .app-nav {
+        display: flex;
+        flex-direction: row;
+        color: #d8d9db;
+        padding-left: 36px !important;
+        width: 100%;
+        background-color: #343a40;
+        font-size: 20px;
+        position: relative;
+    
+        #new {
+            width: 80px;
+            height: 30px;
+            border-radius: 4px 4px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        #message, #manage, #dangtin {
+            width: 80px;
+            height: 30px;
+            border-radius: 4px 4px 0 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: 700;
+            margin-left: 5px !important;
+        }
+        #login {
+            width: 80px;
+            height: 30px;
+            border-radius: 4px 4px 0 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 700;
+            position: absolute;
+            right: 36px;
+        }
+        #avatar{
+            width: 36px;
+            height: 36px;
+            position: absolute;
+            right: 10px;
+            top: -10px;
+        }
+        #bell {
+            position: absolute;
+            right: 6%;
+            top: -10px;
+            border-radius: 50%;
+            background-color: #888;
+            padding: 2px 8px !important;
+
+            fa-icon {
+                color: white;
+                cursor: pointer;
+            }
+            .wrapper-noti {
+                position: absolute;
+                top: 40px;
+                right: -36px;
+                z-index: 999;
+                display: flex;
+                flex-direction: column;
+                background-color:#444;
+                width: 360px;
+                max-height: 540px;
+                border-radius: 5px;
+                display: none;
+                
+                .header-noti {
+                    h2 {
+                        font-size: 36px;
+                        margin-left: 20px !important;
+                        margin-top: 10px !important;
+                    }
+                }
+                ul {
+                    list-style-type: none;
+                    margin-top: 20px !important;
+                    li {
+                        border-radius: 4px;
+                        margin: 5px !important;
+                        a {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            color: white;
+                            text-decoration: none;
+                            img {
+                                width: 36px;
+                                height: 36px;
+                                margin-left: 20px !important;
+                                border-radius: 50%;
+                            }
+                            .noti-info {
+                                margin-left: 20px !important;
+                                display: flex;
+                                flex-direction: column;
+
+                                .noti-description {
+                                    color: #4080ff;
+                                }
+                                .isClick {
+                                    color: #aaa;
+                                }
+                            }
+                        }
+                    }
+                    li:hover {
+                        background-color: #666;
+                    }
+                }
+
+                .footer-noti {
+                    .footer-list {
+                        display: flex;
+                        justify-content: flex-start;
+                        li {
+                            cursor: pointer;
+                            padding: 5px !important;
+                        }
+                    }
+                }
+            }
+            .wrapper-noti::after {
+                content: "";
+                border-width: 20px 27px;
+                border-style: solid;
+                border-color: transparent transparent #444 transparent;
+                position: absolute;
+                right: 25px;
+                top: -25px;
+            }
+            .wrapper-noti::before {
+                content: "";
+                display: block;
+                width: 70px;
+                height: 20px;
+                // background-color: red;
+                position: absolute;
+                top: -10px;
+                right: 10px;
+            }
+        }
+        #bell:hover {
+            background-color: #666;
+        }
+        #bell:hover .wrapper-noti {
+            display: block;
+        }
+        #bell::after {
+            content: "3";
+            font-size: 14px;
+            line-height: 14px;
+            background-color: red;
+            color: white;
+            border-radius: 6px;
+            padding: 2px 6px;
+            position: absolute;
+            top: -10px;
+            right: -5px;
+        }
+    }
+    .white-bar {
+        background-color: aliceblue;
+        height: 10px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        cursor: pointer;
+        font-weight: 700;
+    }
+    .focus {
+        background-color: #d8d9db !important;
+        color: #325584 !important;
+    }
+}

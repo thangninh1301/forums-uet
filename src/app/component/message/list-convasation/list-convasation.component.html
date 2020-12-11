@@ -1,0 +1,138 @@
+<div class="list">
+
+    <div id="head_left">
+        <div class="search">
+            <!-- binding 2 chiều với searchFriend -->
+            <img id="icon_search" src="../../../assets/ICON/IconAppChat/4.svg" alt="">
+            <!--  -->
+            <input #searchInput id="text_search" type="text" placeholder="Tìm kiếm cuộc trò chuyện"
+                [(ngModel)]="searchFriend" (click)="listFriend()">
+        </div>
+        <div id="add">
+            <img id="icon_add" src="../../../assets/ICON/IconAppChat/3.svg" alt="" (click)="openGroupChat()">
+        </div>
+    </div>
+
+
+    <!-- hiện danh sách Conversation -->
+    <div class="list_friend" *ngIf="checkChangeList == 1">
+        <div id="friend" *ngFor="let conv of convasation" routerLink='/message/convasation/{{conv.id}}'
+            (click)="choseConvid(conv)"
+            [ngStyle]="{'background-color' : focus == conv.id ? 'rgba(255, 255, 255, 0.15)' : '#0a1d3b'}">
+            <!-- [ngStyle]="{'background-color' : focus == conv.id ? 'rgba(255, 255, 255, 0.15)' : '#0a1d3b'}" -->
+            <!-- hiện thanh highlight  -->
+            <div id="highlight" *ngIf="focus == conv.id">
+            </div>
+            <div id="avatar">
+                <ngx-avatar id="img_1" size="34"
+                    *ngIf="conv.participants[0].name != null && conv.participants[0].userId != idUser && !conv.isGroup"
+                    name="{{conv.participants[0].name}}"></ngx-avatar>
+                <ngx-avatar id="img_1" size="34"
+                    *ngIf="conv.participants[1].name != null && conv.participants[1].userId != idUser && !conv.isGroup"
+                    name="{{conv.participants[1].name}}"></ngx-avatar>
+                <ngx-avatar id="img_1" size="34"
+                    *ngIf="conv.isGroup"
+                    name="{{conv.name}}"></ngx-avatar>
+            </div>
+
+            <img class="icon_group" *ngIf="conv.isGroup" src="../../../assets/ICON/IconAppChat/group.svg" alt="">
+
+            <div class="content">
+                <!-- so sánh để highlight friend khi chưa rep -->
+                <p id="name" *ngIf="conv.participants[0].name != null && conv.participants[0].userId != idUser && !conv.isGroup"
+                    [ngStyle]="{'color' : conv.unreadCount != 0 || focus == conv.id ? '#ffffff' : '#8e97a5'}">
+                    {{conv.participants[0].name}}
+                </p>
+                <!-- [ngStyle]="{'color' : conv.unreadCount != 0 || focus == conv.id ? '#ffffff' : '#8e97a5'}" -->
+                <p id="name" *ngIf="conv.participants[1].name != null && conv.participants[1].userId != idUser && !conv.isGroup"
+                    [ngStyle]="{'color' : conv.unreadCount != 0 || focus == conv.id ? '#ffffff' : '#8e97a5'}">
+                    {{conv.participants[1].name}}
+
+                </p>
+                <p id="name" *ngIf="conv.isGroup"
+                    [ngStyle]="{'color' : conv.unreadCount != 0 || focus == conv.id ? '#ffffff' : '#8e97a5'}">
+                    {{conv.name}}
+
+                </p>
+                <!-- [ngStyle]="{'color' : conv.unreadCount != 0 || focus == conv.id ? '#ffffff' : '#8e97a5'}" -->
+
+                <!-- tin nhắn cuối là 1 text -->
+                <p id="message" *ngIf="conv.lastMessage.sender != idUser && conv.lastMessage.type == 1 "
+                    [ngStyle]="{'color' : conv.unreadCount != 0 ? '#ffffff' : '#8e97a5'}">
+                    {{conv.lastMessage.content.content}}</p>
+                <!-- tin nhắn khi bắt đầu cuộc trò chuyện -->
+                <p id="message"
+                    *ngIf="conv.lastMessage.sender != idUser && conv.lastMessage.type != 1 && conv.lastMessage.type != 2 && conv.lastMessage.type != 5"
+                    [ngStyle]="{'color' : conv.unreadCount != 0 ? '#ffffff' : '#8e97a5'}">
+                    Đã đầu cuộc trò chuyện</p>
+                <!-- tin nhắn cuối là 1 img -->
+                <p id="message" *ngIf="conv.lastMessage.sender != idUser && conv.lastMessage.type == 2 "
+                    [ngStyle]="{'color' : conv.unreadCount != 0 ? '#ffffff' : '#8e97a5'}">
+                    Đã gửi một ảnh </p>
+                <!-- tin nhắn cuối là 1 file -->
+                <p id="message" *ngIf="conv.lastMessage.sender != idUser && conv.lastMessage.type == 5 "
+                    [ngStyle]="{'color' : conv.unreadCount != 0 ? '#ffffff' : '#8e97a5'}">
+                    Đã gửi một file </p>
+
+                <!-- tin nhắn cuối là 1 text -->
+                <p id="message" *ngIf="conv.lastMessage.sender == idUser && conv.lastMessage.type == 1"
+                    [ngStyle]="{'color' : conv.unreadCount != 0 ? '#ffffff' : '#8e97a5'}">Bạn:
+                    {{conv.lastMessage.content.content}}</p>
+                <!-- tin nhắn cuối khi bắt đầu cuộc trò chuyện -->
+                <p id="message"
+                    *ngIf="conv.lastMessage.sender == idUser && conv.lastMessage.type != 1 && conv.lastMessage.type != 2 && conv.lastMessage.type != 5"
+                    [ngStyle]="{'color' : conv.unreadCount != 0 ? '#ffffff' : '#8e97a5'}">
+                    Bạn đã đầu cuộc trò chuyện</p>
+                <!-- tin nhắn cuối là 1 img -->
+                <p id="message" *ngIf="conv.lastMessage.sender == idUser && conv.lastMessage.type == 2"
+                    [ngStyle]="{'color' : conv.unreadCount != 0 ? '#ffffff' : '#8e97a5'}">Bạn:
+                    đã gửi một ảnh</p>
+                <!-- tin nhắn cuối là 1 file -->
+                <p id="message" *ngIf="conv.lastMessage.sender == idUser && conv.lastMessage.type == 5"
+                    [ngStyle]="{'color' : conv.unreadCount != 0 ? '#ffffff' : '#8e97a5'}">Bạn:
+                    đã gửi một file</p>
+
+
+            </div>
+            <div class="detail">
+                <div id="time" *ngIf="calculateTime(conv.lastMessage.createdAt) == 1">
+                    <p> {{ conv.lastMessage.createdAt | date : 'HH:mm' }} </p>
+                </div>
+                <div id="time" *ngIf="calculateTime(conv.lastMessage.createdAt) == 2">
+                    <p> {{ conv.lastMessage.createdAt | date : 'E' }} </p>
+                </div>
+                <div id="time" *ngIf="calculateTime(conv.lastMessage.createdAt) == 3">
+                    <p> {{ conv.lastMessage.createdAt | date : 'dd:MMMM' }} </p>
+                </div>
+                <!-- khi noRep = 0 thì bỏ hiện tin nhắn chưa rep -->
+                <div id="count-message" *ngIf="conv.unreadCount != 0 && conv.lastMessage.sender != idUser">
+                    <p>{{ conv.unreadCount}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- hiện danh sách người dùng -->
+    <div class="list_friend" *ngIf="checkChangeList == 2">
+        <div id="friend" *ngFor="let user of listUser | friendFilter : searchFriend" (click)="CreateConv(user)">
+            <div id="avatar">
+                <ngx-avatar id="img_1" size="34" name="{{user.fullName}}"></ngx-avatar>
+            </div>
+            <div class="content">
+                <!-- so sánh để highlight friend khi chưa rep -->
+                <p id="name"> {{user.fullName}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="bot-left">
+        <!-- (click) = "getMessage()" -->
+        <!-- (click)="getConv()" -->
+        <button id="left-button" (click)="listConv()"
+            [ngStyle]="{'background-color' : checkChangeList == 1 ? '#2196f3' : 'rgba(255, 255, 255, .2)'}">Cuộc trò
+            chuyện</button>
+        <button id="right-button" (click)="listFriend()"
+            [ngStyle]="{'background-color' : checkChangeList == 2 ? '#2196f3' : 'rgba(255, 255, 255, .2)'}">Danh
+            sách</button>
+    </div>
+</div>

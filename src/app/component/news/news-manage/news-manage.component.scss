@@ -1,0 +1,149 @@
+.wrapper-manage {
+    margin: 10px 36px !important;
+
+    button {
+        outline: none;
+        border: none;
+        padding: 6px 10px !important;
+        border-radius: 2px;
+    }
+    
+    .post-list {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+
+        .post-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #666;
+            padding: 6px 10px !important;
+            border-radius: 2px;
+            position: relative;
+            max-height: 62px;
+            overflow-y: hidden;
+
+            .post-title {
+                width: 80%;
+                font-size: 26px;
+                font-weight: 500;
+                color: white;
+                letter-spacing: 0.8px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+
+                h2 {
+                    max-width: 760px;
+                    max-height: 40px;
+                    overflow-y: hidden;
+                }
+
+                .like-comment-time {
+                    display: flex;
+                    align-items: center;
+                    .like-comment {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        margin-right: 30px !important;
+
+                        fa-icon {
+                            margin-right: 6px !important;
+                        }
+                    }    
+                }
+
+                span {
+                    font-size: 16px;
+                    color: #c4bcbc;
+                }
+            }
+            .post-title::after {
+                content: "";
+                display: block;
+                background-color: #c4bcbc;
+                width: 2px;
+                height: 30px;
+                position: absolute;
+                top: 50%;
+                margin-top: -15px;
+                right: 32.5%;
+            }
+            .post-title::before {
+                content: "";
+                display: block;
+                background-color: #c4bcbc;
+                width: 2px;
+                height: 30px;
+                position: absolute;
+                top: 50%;
+                margin-top: -15px;
+                right: 38%;
+            }
+
+            .post-edit {
+                .btn-icon-edit {
+                    color: white;
+                    background-color: #5b5;
+                }
+                .btn-icon-edit:hover {
+                    background-color: #2d8a2d;
+                }
+            }
+
+            .post-delete {
+                .btn-icon-delete {
+                    color: white;
+                    background-color: #e55;
+                }
+                .btn-icon-delete:hover {
+                    background-color: #c43b3b;
+                }
+            }
+
+            .post-news {
+                .post-btn {
+                    color: white;
+                    background-color: #48f;
+                    font-size: 18px;
+                    font-weight: 500;
+                }
+                .post-btn:hover {
+                    background-color: #27b;
+                }
+
+                .btn-disabled {
+                    border: 1px solid #999999;
+                    background-color: #cccccc;
+                    color: #666666;
+                    cursor: not-allowed;
+                }
+                .btn-disabled:hover {
+                    border: 1px solid #999999;
+                    background-color: #cccccc;
+                    color: #666666;
+                }
+            }
+        }
+
+        hr {
+            margin: 6px 0 !important;
+            border-top: 2px solid #999;
+        }
+
+    }
+
+    .btn-add-post {
+        background-color: transparent;
+        color: white;
+        font-size: 20px;
+        font-weight: 400;
+    }
+    .btn-add-post:hover {
+        color: #c7c6c6;
+    }
+
+}
